@@ -26,30 +26,76 @@ getOption("show.error.locations")
 
 # Notably, R distinguishes between warnings and errors
 
+warn.default <- getOption("warn")
+
 getOption("warn")
 
 # The current handling "level" for warnings is returned
 # this is a little obtuse but explained at ?warnings
+
 # specifically
+
+# the default
+getOption("warn")
+
+# Will print warnings to the console at the end of execution
+
+options(warn = 1)
+
+# will print warnings as they go
 
 options(warn = 2)
 
 # will have R treat warnings as errors and then you can handle them
 # with the function specified for errors
 
-### Caveat emptor:
-## AFAIK, R doesn't allow us to "protect" options from changing
-## So if a package temporarily disables warnings, we can't stop it
-## without setting a conditional debugger like so
+options(warn = -1)
 
-trace(what = "options", tracer = eval(.Options$warn <- 2))
+# Ignores all warnings. 
 
-# this is terrible. Let's undo that
+# return to default
 
-untrace(options)
+options(warn = warn.default)
 
 # Usually if an established package squashes warnings, there's a reason
 # e.g. if it relies on complex models which may produce 
 # Inf/-Inf but can deal with those results
 
+# or ggplot2
+# back to our example:
 
+p + ylim(0, 8)
+
+# raises a warning because we dropped some points, even though we 
+# may have intended that. 
+
+### Caveat emptor:
+## AFAIK, R doesn't allow us to "protect" options from changing
+## So if a package temporarily disables warnings, we can't stop it
+## without setting a breakpoint like so
+
+trace(options, exit = function() {
+                        options(warn = 2)
+                      })
+# There's a few things which are interesting here:
+
+# First:
+#  trace makes a copy of the function which over-writes
+#  the function itself and and previous traces
+#  so we won't run into infinite recursion problems 
+
+# Second:
+#  options() is written all in C, so there isn't a means to
+#  insert ourselves into a specific point in the parse tree
+#  and if we want to piggyback on a call to options like
+#  options(warn = -1), we need to do so on exit
+
+# Third:
+#  .Options seems like a good way around this, but it's 
+#  too black-magic, even for R. .Options is copied around
+#  dynamically & only some functions reference .Options vs
+#  options()
+
+# this is terrible. Let's undo that
+
+untrace(options)

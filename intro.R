@@ -27,9 +27,9 @@ for(i in 1:10) {
 
 library(ggplot) 
 
-y <- 1:10
+plot.df <- data.frame(a = 1:10, b = 1:10)
 
-p <- ggplot(data.frame(x = x, y = y)) + geom_point(aes(x = x, y = y))
+p <- ggplot(plot.df) + geom_point(aes(x = a, y = b))
 
 
 # let's make a dumb function

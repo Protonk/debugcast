@@ -68,6 +68,30 @@ as.list(body(fixed))
 # don't bother guessing what your insertion point should be. 
 # You'll likely get it wrong.
 
+# body() can also be useful to get a sense of how trace inserts
+# breakpoints
+
+someStuff <- function() {
+  x <- 1:10
+  x <- sqrt(x)
+  x[] <- x
+  return(x)
+}
+trace(what = "someStuff", at = 2, tracer = browser)
+
+body(someStuff)
+
+# {
+#   {
+#     .doTrace(browser(), "step 2")
+#     x <- 1:10
+#   }
+#   x <- sqrt(x)
+#   x[] <- x
+#   return(x)
+# }
+untrace(someStuff)
+
 # trace() serves different functions depending on the passed arguments
 # if we only pass in the function we want to trace...
 
