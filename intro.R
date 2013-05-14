@@ -75,7 +75,8 @@ broken <- function(len) {
 # From here we can work just as we would in the console normally
 
 # ls() returns files in the workspace while in the console, 
-# but it is context specific (we can even specify the context if we want)
+# but it is context specific 
+# (we can even specify the context if we want)
 # typing ls()...
 
 # [1] "i" "len" "x"
@@ -86,9 +87,11 @@ broken <- function(len) {
 ## The object we passed in as an arg: "len"
 ## The object we created explicitly with `<-`: "x"
 
-# we can advance our browser (not quite a debugger, we'll get there!)
+# we can advance our browser 
+# (not quite a debugger, we'll get there!)
 # by typing c in the console. 
-# because we entered in a loop, we'll call the browser at each iteration
+# because we entered in a loop, 
+# we'll call the browser at each iteration
 
 # That control is a little coarse. We want 2 things:
 ## The ability to inspect objects
@@ -97,7 +100,7 @@ broken <- function(len) {
 # For most functions 
 # (specifically and importantly including your code)
 # n in the console will transition to a step through debugger
-# we can inspect line by line, not just each invokation of browser
+# we can inspect line by line, not just each browser call
 
 
 fixed <- function(len) {
