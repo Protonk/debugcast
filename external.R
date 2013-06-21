@@ -32,7 +32,7 @@ library(truncnorm)
 # Now we're stuck! 
 # Libraries are (by default on Windows/OS X) installed as binary data
 # functions, object and methods are lazily loaded (on every platform)
-# for our purposes, this means no source tree
+# for our purposes, this means no source map
 # Canonical reference is http://cran.r-project.org/doc/manuals/R-exts.html
 
 # if we look at the files

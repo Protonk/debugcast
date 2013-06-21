@@ -13,25 +13,6 @@
 # http://www.burns-stat.com/documents/tutorials/impatient-r/
 
 
-# print lines as we go
-
-x <- runif(10)
-for(i in 1:10) {
-  if (x[i] > 0.5) {
-    print(x[i])
-  }
-}
-
-# print doesn't always work because it is driven by
-# the object's print method.
-
-library(ggplot) 
-
-plot.df <- data.frame(a = 1:10, b = 1:10)
-
-p <- ggplot(plot.df) + geom_point(aes(x = a, y = b))
-
-
 # let's make a dumb function
 
 broken <- function(len) {
