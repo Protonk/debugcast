@@ -1,18 +1,5 @@
 ## Debugging in R
 
-### Introductions to R:
-
-# John Cook on R for programmers (from other languages)
-# http://www.johndcook.com/R_language_for_programmers.html
-
-# Patrick Burns's "The R Inferno"
-# A bit long, but detailed
-# http://www.burns-stat.com/documents/books/the-r-inferno/
-
-# A more basic intro from Burns
-# http://www.burns-stat.com/documents/tutorials/impatient-r/
-
-
 # let's make a dumb function
 
 broken <- function(len) {
@@ -26,16 +13,6 @@ broken(10)
 
 # Hmmmmm
 # That didn't work how we wanted
-
-broken <- function(len) {
-  for(i in 1:len) {
-    x <- i + runif(1)
-    print(x)
-  }
-  return(x)
-}
-
-# We got a lot of output, but it is still a little inscrutable. 
 
 # we can enter in to a given execution context with
 # browser()
@@ -92,9 +69,11 @@ fixed <- function(len) {
   return(x)
 }
 
-fixedBetter <- function(len) {
-  return(1:len + runif(len))
-}
+
+# Or...
+# fixedBetter <- function(len) {
+#   return(1:len + runif(len))
+# }
 
 # one last bit
 # just like anything else, we can put the 

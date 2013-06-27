@@ -61,14 +61,6 @@ options(warn = warn.default)
 # e.g. if it relies on complex models which may produce 
 # Inf/-Inf but can deal with those results
 
-# or ggplot2
-# back to our example:
-
-p + ylim(0, 8)
-
-# raises a warning because we dropped some points, even though we 
-# may have intended that. 
-
 ### Caveat emptor:
 ## AFAIK, R doesn't allow us to "protect" options from changing
 ## So if a package temporarily disables warnings, we can't stop it
