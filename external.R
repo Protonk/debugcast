@@ -8,6 +8,14 @@
 
 # The source file first
 
+# fixed <- function(len) {
+#   x <- numeric()
+#   for(i in 1:len) {
+#     x[i] <- i + runif(1)
+#   }
+#   return(x)
+# }
+
 source("source.R")
 
 setBreakpoint("source.R", 5)
